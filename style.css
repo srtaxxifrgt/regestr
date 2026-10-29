@@ -1,0 +1,221 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f7f2;
+    color: #2e3b2c;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+main {
+    background: #ffffff;
+    max-width: 550px;
+    width: 100%;
+    padding: 40px 30px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e0e8db;
+}
+
+header h1 {
+    font-size: 26px;
+    font-weight: 600;
+    margin: 0 0 8px;
+    color: #1e2b1c;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+header p {
+    text-align: center;
+    color: #6b7c68;
+    font-size: 15px;
+    margin: 0 0 30px;
+    line-height: 1.5;
+}
+
+section {
+    background: #f0f5ec;
+    padding: 15px 20px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    font-size: 15px;
+    color: #3d4f3a;
+    text-align: center;
+    border-left: 4px solid #8fae7e;
+}
+
+section p {
+    margin: 4px 0;
+}
+
+section strong {
+    color: #1e2b1c;
+}
+
+form p {
+    margin: 0 0 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #3d4f3a;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #d0dcc9;
+    border-radius: 12px;
+    font-size: 16px;
+    background: #fafcf9;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #8fae7e;
+    box-shadow: 0 0 0 3px rgba(143, 174, 126, 0.2);
+    background: #ffffff;
+}
+
+input.invalid,
+select.invalid {
+    border-color: #c0392b;
+    background: #fdf2f0;
+}
+
+.error {
+    display: block;
+    color: #c0392b;
+    font-size: 13px;
+    margin-top: 4px;
+    min-height: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 16px;
+    background: #5a7a4e;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background: #4a6840;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:disabled {
+    background: #a8b8a0;
+    cursor: not-allowed;
+}
+
+#formStatus {
+    text-align: center;
+    font-size: 14px;
+    color: #5a7a4e;
+    margin: 0;
+    min-height: 20px;
+}
+
+footer p {
+    text-align: center;
+    font-size: 12px;
+    color: #8a9a86;
+    margin-top: 25px;
+    line-height: 1.5;
+}
+
+.hidden-field {
+    display: none;
+}
+
+/* Планшеты и небольшие ноутбуки */
+@media (max-width: 600px) {
+    body {
+        padding: 12px;
+        align-items: flex-start; /* чтобы длинная форма не центрировалась по вертикали с обрезкой */
+    }
+
+    main {
+        padding: 28px 20px;
+        border-radius: 20px;
+    }
+
+    header h1 {
+        font-size: 22px;
+        letter-spacing: 0.5px;
+    }
+
+    header p {
+        font-size: 14px;
+        margin-bottom: 22px;
+    }
+
+    section {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+}
+
+/* Узкие телефоны */
+@media (max-width: 380px) {
+    body {
+        padding: 8px;
+    }
+
+    main {
+        padding: 22px 14px;
+        border-radius: 16px;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    input,
+    select {
+        padding: 12px 14px;
+        font-size: 16px; /* не уменьшать ниже 16px — иначе зум на iOS */
+    }
+
+    button {
+        padding: 14px;
+        font-size: 16px;
+    }
+
+    footer p {
+        font-size: 11px;
+    }
+}
+
+header h1,
+header p,
+section p {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}

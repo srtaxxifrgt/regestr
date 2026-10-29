@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация — Йога тела и звука в Урам</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main>
+    <header>
+        <h1>
+            <span class="brand">⭐ Сияй</span>
+            <span class="divider" aria-hidden="true">·</span>
+            <span class="event">Йога тела и звука</span>
+       </h1>
+        <p>Большой спортивный комплекс «Урам»<strong>
+           20 ноября | 18:00–21:00</strong></p>
+    </header>
+
+    <section>
+        <p><strong>Вход свободный</strong>, но количество мест ограничено.</p>
+        <p>Пожалуйста, зарегистрируйтесь, чтобы мы знали о вас.</p>
+    </section>
+
+    
+    <form id="regForm" action="https://formsubmit.co/stukhvatulllina@mail.ru" method="POST" novalidate>
+
+        <input type="hidden" name="_subject" value="Новая заявка на Йогу в Урам! 🌿">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="thanks.html">
+
+        <!-- Honeypot против ботов -->
+        <p class="hidden-field">
+            <label for="honeypot">Не заполняйте это поле</label>
+            <input type="text" id="honeypot" name="_honey" tabindex="-1" autocomplete="off">
+        </p>
+
+        <p>
+            <label for="name">Ваше имя *</label>
+            <input type="text" id="name" name="Имя" placeholder="Как к вам обращаться?" required>
+            <span class="error" id="error-name"></span>
+        </p>
+
+         <p>
+            <label for="phone">Ваш номер телефона *</label>
+            <input type="tel" id="phone" name="Телефон" placeholder="+7 (999) 123-45-67" required>
+            <span class="error" id="error-phone"></span>
+        </p>
+
+        <p>
+            <label for="guests">Количество человек (включая вас) *</label>
+            <select id="guests" name="Количество человек" required>
+                <option value="" disabled selected>Выберите число</option>
+                <option value="1">1 (только я)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 и более</option>
+            </select>
+            <span class="error" id="error-guests"></span>
+        </p>
+
+        <p>
+            <button type="submit" id="submitBtn">Зарегистрироваться 🌿</button>
+        </p>
+
+        <p id="formStatus" role="status"></p>
+    </form>
+
+    <footer>
+        <p>Нажимая кнопку, вы соглашаетесь на обработку персональных данных для организации мероприятия.<br>
+           До встречи на празднике тела и души 💋</p>
+    </footer>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
