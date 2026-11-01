@@ -3,7 +3,7 @@
 
     const form = document.getElementById('regForm');
     const nameInput = document.getElementById('name');
-    const phoneInput = document.getElementById('phone'); // если меняла email на телефон
+    const phoneInput = document.getElementById('phone');
     const guestsSelect = document.getElementById('guests');
     const submitBtn = document.getElementById('submitBtn');
     const statusEl = document.getElementById('formStatus');
@@ -51,17 +51,44 @@
 
     // Слушаем отправку формы
     form.addEventListener('submit', function (e) {
-        // Если проверка не пройдена — блокируем отправку
+        e.preventDefault(); // Блокируем обычную отправку страницы
+
+        // Если проверка не пройдена — показываем ошибку
         if (!validate()) {
-            e.preventDefault(); // Останавливаем форму
             statusEl.textContent = 'Пожалуйста, исправьте ошибки в форме.';
             return;
         }
 
-        // ЕСЛИ ПРОВЕРКА ПРОЙДЕНА — НИЧЕГО НЕ ДЕЛАЕМ!
-        // Браузер сам отправит форму на FormSubmit.
-        // Только меняем текст на кнопке для красоты
         submitBtn.disabled = true;
         submitBtn.textContent = 'Отправляем...';
+        statusEl.textContent = '';
+
+        const data = new FormData(form);
+
+        // Отправляем данные на Formspree через AJAX
+        fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(function (response) {
+            if (response.ok) {
+                // Если всё ок — перекидываем на страницу благодарности
+                window.location.href = 'thanks.html';
+            } else {
+                // Если ошибка — читаем ответ и показываем
+                return response.json().then(function(errData) {
+                    throw new Error(errData.errors ? errData.errors[0].message : 'Ошибка отправки');
+                });
+            }
+        })
+        .catch(function (error) {
+            console.error(error);
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Зарегистрироваться 🌿';
+            statusEl.textContent = 'Не удалось отправить. ' + error.message;
+        });
     });
 })();
